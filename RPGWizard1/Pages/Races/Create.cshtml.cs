@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using RPGWizard1.Data;
 using RPGWizard1.Models;
 
 namespace RPGWizard1.Pages.Races
 {
     public class CreateModel : PageModel
     {
-        private readonly RPGWizard1.Models.RPGWizard1Context _context;
+        private readonly RPGWizardContext _context;
 
-        public CreateModel(RPGWizard1.Models.RPGWizard1Context context)
+        public CreateModel(RPGWizardContext context)
         {
             _context = context;
         }
@@ -33,7 +34,7 @@ namespace RPGWizard1.Pages.Races
                 return Page();
             }
 
-            _context.Race.Add(Race);
+            _context.Races.Add(Race);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

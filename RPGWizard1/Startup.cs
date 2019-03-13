@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using RPGWizard1.Models;
+using RPGWizard1.Data;
 
 namespace RPGWizard1
 {
@@ -36,7 +37,7 @@ namespace RPGWizard1
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<RPGWizard1Context>(options =>
+            services.AddDbContext<RPGWizardContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RPGWizard1Context")));
         }
 

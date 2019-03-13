@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using RPGWizard1.Data;
 using RPGWizard1.Models;
 
 namespace RPGWizard1
@@ -21,7 +22,7 @@ namespace RPGWizard1
                 try
                 {
                     var context = services.
-                        GetRequiredService<RPGWizard1Context>();
+                        GetRequiredService<RPGWizardContext>();
                     context.Database.Migrate();
                     SeedData.Initialize(services);
                 }

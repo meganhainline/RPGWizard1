@@ -5,24 +5,36 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using RPGWizard1.Data;
 using RPGWizard1.Models;
 
 namespace RPGWizard1.Pages.Races
 {
     public class IndexModel : PageModel
     {
-        private readonly RPGWizard1.Models.RPGWizard1Context _context;
+        private readonly RPGWizardContext _context;
 
-        public IndexModel(RPGWizard1.Models.RPGWizard1Context context)
+        public IndexModel(RPGWizardContext context)
         {
             _context = context;
         }
 
-        public IList<Race> Race { get;set; }
+        public IList<Race> Races { get; set; }
 
         public async Task OnGetAsync()
         {
-            Race = await _context.Race.ToListAsync();
+            Races = await _context.Races.ToListAsync();
+            
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            return null;
         }
     }
 }

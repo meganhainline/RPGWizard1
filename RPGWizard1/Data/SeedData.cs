@@ -1,27 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using RPGWizard1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RPGWizard1.Models
+namespace RPGWizard1.Data
 {
     public static class SeedData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new RPGWizard1Context(
+            using (var context = new RPGWizardContext(
                 serviceProvider.GetRequiredService<
-                    DbContextOptions<RPGWizard1Context>>()))
+                    DbContextOptions<RPGWizardContext>>()))
             {
                 // Look for any races.
-                if (context.Race.Any())
+                if (context.Races.Any())
                 {
                     return;   // DB has been seeded
                 }
 
-                context.Race.AddRange(
+                context.Races.AddRange(
                     new Race
                     {
                         Name = "Human",

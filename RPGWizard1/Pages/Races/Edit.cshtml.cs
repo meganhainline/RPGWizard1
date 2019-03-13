@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using RPGWizard1.Data;
 using RPGWizard1.Models;
 
 namespace RPGWizard1.Pages.Races
 {
     public class EditModel : PageModel
     {
-        private readonly RPGWizard1.Models.RPGWizard1Context _context;
+        private readonly RPGWizardContext _context;
 
-        public EditModel(RPGWizard1.Models.RPGWizard1Context context)
+        public EditModel(RPGWizardContext context)
         {
             _context = context;
         }
@@ -29,7 +30,7 @@ namespace RPGWizard1.Pages.Races
                 return NotFound();
             }
 
-            Race = await _context.Race.FirstOrDefaultAsync(m => m.ID == id);
+            Race = await _context.Races.FirstOrDefaultAsync(m => m.ID == id);
 
             if (Race == null)
             {
@@ -68,7 +69,7 @@ namespace RPGWizard1.Pages.Races
 
         private bool RaceExists(int id)
         {
-            return _context.Race.Any(e => e.ID == id);
+            return _context.Races.Any(e => e.ID == id);
         }
     }
 }
