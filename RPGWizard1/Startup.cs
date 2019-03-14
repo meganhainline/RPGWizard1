@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using RPGWizard1.Models;
 using RPGWizard1.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace RPGWizard1
 {
@@ -35,10 +36,18 @@ namespace RPGWizard1
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Races");
+                options.Conventions.AuthorizeFolder("/Wizard");
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                
             services.AddDbContext<RPGWizardContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("RPGWizard1Context")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+.AddEntityFrameworkStores<RPGWizardContext>()
+.AddDefaultUI();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +68,7 @@ namespace RPGWizard1
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

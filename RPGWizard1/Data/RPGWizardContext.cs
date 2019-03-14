@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace RPGWizard1.Data
 {
-    public class RPGWizardContext : DbContext
+    public class RPGWizardContext : IdentityDbContext
     {
         public RPGWizardContext (DbContextOptions<RPGWizardContext> options)
             : base(options)
