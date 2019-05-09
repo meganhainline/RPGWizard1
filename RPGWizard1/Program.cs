@@ -24,7 +24,7 @@ namespace RPGWizard1
                     var context = services.
                         GetRequiredService<RPGWizardContext>();
                     context.Database.Migrate();
-                    SeedData.Initialize(services);
+                    RaceData.Initialize(services);
                 }
                 catch (Exception ex)
                 {

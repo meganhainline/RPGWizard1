@@ -1,16 +1,16 @@
-﻿@page
+﻿@page "{id:int?}"
 @model RPGWizard1.Pages.Races.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Choose your Race";
 }
 
-<h1>Index</h1>
+<h1>Choose your Race</h1>
 
 <p>
     @*<a asp-page="Create">Create New</a>*@
 </p>
-<form method="post">
+<form action="NewClass">
 
 <table class="table">
     <thead>
@@ -29,7 +29,7 @@
 @foreach (var item in Model.Races) {
         <tr>
             <td>
-                <input type="radio" name="Race"/>
+                <input type="radio" name="Race" value="@item.ID"/>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

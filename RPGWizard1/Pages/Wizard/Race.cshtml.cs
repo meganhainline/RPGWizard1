@@ -37,7 +37,7 @@ namespace RPGWizard1.Pages.Wizard
             _context.Races.Add(Race);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Race");
         }
     }
 }

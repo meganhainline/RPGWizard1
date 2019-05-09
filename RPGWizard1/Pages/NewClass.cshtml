@@ -1,0 +1,50 @@
+﻿@page "{id:int?}"
+@model RPGWizard1.Pages.Classes.IndexModel
+
+@{
+    ViewData["Title"] = "Choose your Class";
+    //string SRace = Request["Race"];
+}
+
+<h1>Choose your Class</h1>
+
+<p>
+    @*<a asp-page="Create">Create New</a>*@
+</p>
+<form action="NewClass"> 
+
+    <!--This hidden value stores the race field-->
+    <input type ="hidden" name="Race" value="@(Request.Query["Race"])"/>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Classes[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Classes[0].Description)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Classes) //for subraces have a foreach with if statements corresponding to each race to only pull subraces that match the race
+            {
+                <tr>
+                    <td>
+                        <input type="radio" name="Class" value="@item.ID"/>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>

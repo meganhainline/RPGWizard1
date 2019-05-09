@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RPGWizard1.Data
 {
-    public static class SeedData
+    public static class SubRaceData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
@@ -16,52 +16,52 @@ namespace RPGWizard1.Data
                 serviceProvider.GetRequiredService<
                     DbContextOptions<RPGWizardContext>>()))
             {
-                // Look for any races.
-                if (context.Races.Any())
+                // Look for any subraces.
+                if (context.SubRaces.Any())
                 {
                     return;   // DB has been seeded
                 }
 
                 context.Races.AddRange(
-                    new Race
+                    new SubRace
                     {
                         Name = "Human",
                         Traits = "Adaptable and Ambitious"
-                        
+
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Elf",
                         Traits = "Artistic and Optimistic"
 
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Dwarf",
                         Traits = "Traditional and Industrious"
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Halfling",
                         Traits = "Cheerful and Affable"
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Gnome",
                         Traits = "Curious and Impulsive"
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Half-Orc",
                         Traits = "Adaptable and Self-Conscious"
                     },
 
-                    new Race
+                    new SubRace
                     {
                         Name = "Half-Giant",
                         Traits = "Tough and Strong, but not too Nimble"
@@ -71,5 +71,4 @@ namespace RPGWizard1.Data
             }
         }
     }
-}
-
+}*/
