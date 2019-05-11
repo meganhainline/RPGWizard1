@@ -1,4 +1,86 @@
-﻿@page
-@model RPGWizard1.Pages.Wizard.SubRaceModel
+﻿@*@page "{id:int?}"
+@model @*RPGWizard1.Pages.SubRaces.IndexModel //??? Where do i define this??
+
 @{
+    ViewData["Title"] = "Choose your SubRace";
 }
+
+<h1>Choose your SubRace</h1>
+
+<p>
+    @*<a asp-page="Create">Create New</a>
+</p>
+<form action="NewClass">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>
+                  @Html.DisplayNameFor(model => model.SubRaces[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SubRaces[0].Traits)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SubRaces)
+            {
+            <tr>
+                <td>
+                    <input type="radio" name="SubRace" value="@item.ID" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Race_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubRaceName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Strength)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dexterity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Constitution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Wisdom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Intelligence)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Charisma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Speed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vision)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Resistances)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proficiencies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Languages)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Special)
+                </td>
+                
+            </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Save" class="btn btn-primary" />
+</form>*@
