@@ -21,9 +21,9 @@ namespace RPGWizard1.Pages
 
         public IList<SubRace> SubRaces { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int race)
         {
-            SubRaces = await _context.SubRaces.ToListAsync(); //This is the error message shown when I try to run this page
+            SubRaces = await _context.SubRaces.Where(x=> x.Race_ID==race).ToListAsync(); //This is the changed line that passes in Race_ID information and fixed the link from Race to correct subrace page
         }
 
         public async Task<IActionResult> OnPostAsync()
