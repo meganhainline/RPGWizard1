@@ -1,0 +1,54 @@
+﻿@page
+@model RPGWizard1.Pages.BackgroundsModel
+
+@{
+    ViewData["Title"] = "Choose Your Background";
+}
+
+<h1>Choose Your Background</h1>
+
+<p>
+    @*<a asp-page="Create">Create New</a>*@
+</p>
+<form action="Alignments"/>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Background[0].BackgroundTitle)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Background[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Background[0].Bonuses)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Background)
+            {
+            <tr>
+                <td>
+                    <input type="radio" name="Race" value="@item.ID" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BackgroundTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bonuses)
+                </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Save" class="btn btn-primary" />
