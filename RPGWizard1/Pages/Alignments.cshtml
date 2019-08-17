@@ -8,10 +8,11 @@
 <h1>Choose Alignment</h1>
 
 <p>
-    @*<a asp-page="Create">Create New</a>*@
+    @*<a asp-page="Create">Create New</a>*@    @*START...adding input type hidden to store data from page to page*@
 </p>
 <form action="Alignments" />
 
+<input type="hidden" name="Alignment" value="@(Request.Query["Alignment"])" />
 <table class="table">
     <thead>
         <tr>
@@ -28,15 +29,18 @@
 @foreach (var item in Model.Alignment) {
         <tr>
             <td>
+                <input type="radio" name="Alignment" value="@item.ID" />
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Alignments)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                @*<a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+            <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>*@
             </td>
         </tr>
 }

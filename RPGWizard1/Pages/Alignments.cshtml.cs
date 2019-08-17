@@ -23,7 +23,7 @@ namespace RPGWizard1.Pages
 
         public async Task OnGetAsync()
         {
-            Alignment = await _context.bAlignments.ToListAsync();
+            Alignment = await _context.bAlignments.ToListAsync(); //when i get an error message after creating a new razor page, change the name of the context to match the name of the data table!
         }
     }
 }
